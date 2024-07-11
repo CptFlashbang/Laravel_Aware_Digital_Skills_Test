@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Joke extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'message',
+    ];
+
 }
