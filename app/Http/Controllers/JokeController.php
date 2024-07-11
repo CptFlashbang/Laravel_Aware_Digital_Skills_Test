@@ -14,7 +14,9 @@ class JokeController extends Controller
      */
     public function index(): View
     {
-        return view('jokes.index');
+        return view('jokes.index', [
+            'jokes' => Joke::with('user')->latest()->get(),
+        ]);
     }
 
     /**
