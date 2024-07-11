@@ -1,0 +1,24 @@
+From 8818d4dd03d0031c3089ab437b3e15eca486ee55 Mon Sep 17 00:00:00 2001
+From: Callum Yates <Callum.Yates.180@gmail.com>
+Date: Thu, 21 Mar 2024 14:59:52 +0000
+Subject: [PATCH] Fix for docker-compose permissions
+
+---
+ docker-compose.yml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 90ce537..094074a 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -3,7 +3,6 @@ version: '3'
+ services:
+   laravel:
+     image: orchisltd/laravel:10
+-    user: "1000:1000"
+     ports:
+       - '${APP_PORT:-0}:80'
+     volumes:
+-- 
+2.41.0.windows.1
+
