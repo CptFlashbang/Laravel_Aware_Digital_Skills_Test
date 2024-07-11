@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Joke;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class JokeController extends Controller
 {
