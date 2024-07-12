@@ -65,9 +65,18 @@ class JokeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Joke $joke)
+    public function update(Request $request, Joke $joke): RedirectResponse
     {
-        //
+        Gate::authorize('update', $joke);
+ 
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+ 
+        $joke->update($validated);
+ 
+        return redirect(route('jokes.index'));
+
     }
 
     /**
