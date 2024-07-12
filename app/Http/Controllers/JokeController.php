@@ -84,6 +84,10 @@ class JokeController extends Controller
      */
     public function destroy(Joke $joke)
     {
-        //
+        Gate::authorize('delete', $joke);
+ 
+        $joke->delete();
+ 
+        return redirect(route('jokes.index'));
     }
 }
