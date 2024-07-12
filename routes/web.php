@@ -24,8 +24,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('jokes', JokeController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy', 'fetchFromAPI'])
+    ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']); 
+
+Route::get('jokes/fetchFromAPI', [JokeController::class, 'fetchFromAPI'])
+->name('jokes.fetchFromAPI')
+->middleware(['auth', 'verified']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
