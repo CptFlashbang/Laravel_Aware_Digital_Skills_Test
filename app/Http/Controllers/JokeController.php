@@ -6,6 +6,7 @@ use App\Models\Joke;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 class JokeController extends Controller
 {
@@ -53,9 +54,12 @@ class JokeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Joke $joke)
+    public function edit(Joke $joke): View
     {
-        //
+        Gate::authorize('update', $joke);
+        return view('jokes.edit', [
+            'joke' => $joke,
+        ]);
     }
 
     /**
