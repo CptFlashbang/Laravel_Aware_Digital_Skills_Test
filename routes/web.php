@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('jokes', JokeController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy'])
+    ->only(['index', 'store', 'edit', 'update', 'destroy', 'fetchJoke'])
     ->middleware(['auth', 'verified']); 
 
 Route::middleware('auth')->group(function () {

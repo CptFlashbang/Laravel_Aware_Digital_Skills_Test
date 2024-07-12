@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Http;
 
 class JokeController extends Controller
 {
@@ -89,5 +90,16 @@ class JokeController extends Controller
         $joke->delete();
  
         return redirect(route('jokes.index'));
+    }
+    /**
+     * Retrieve a joke from the API.
+     */
+     public function fetchJoke()
+    {
+        $response = Http::get('https://icanhazdadjoke.com/', [
+            'Accept' => 'application/json'
+        ]);
+
+        return response()->json($response->json());
     }
 }
