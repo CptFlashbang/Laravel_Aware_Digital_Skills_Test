@@ -45,7 +45,7 @@ class JokePolicy
      */
     public function delete(User $user, Joke $joke): bool
     {
-        //
+        return $this->update($user, $joke);
     }
 
     /**
