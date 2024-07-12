@@ -94,12 +94,12 @@ class JokeController extends Controller
     /**
      * Retrieve a joke from the API.
      */
-     public function fetchFromAPI()
+    public function fetchFromAPI()
     {
-        $response = Http::get('https://icanhazdadjoke.com/', [
-            'Accept' => 'application/json'
-        ]);
-
-        return response()->json($response->json());
+        $response = Http::withHeaders(['Accept' => 'application/json'])
+            ->get('https://icanhazdadjoke.com/');
+        
+        return response()->json(['joke' => $response->json('joke')]);
     }
+
 }
