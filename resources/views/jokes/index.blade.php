@@ -8,10 +8,12 @@
                placeholder="{{ __('Are you feeling funny?') }}"
                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
            >{{ old('message') }}</textarea>
-           <x-input-error :messages="$errors->get('message')" class="mt-2" />
-           <x-primary-button class="mt-4">{{ __('Tell joke') }}</x-primary-button>
+            <x-input-error :messages="$errors->get('message')" class="mt-2" />
+            <x-primary-button class="mt-4">{{ __('Tell joke') }}</x-primary-button>
+            <x-secondary-button type="button" data-url="{{ route('jokes.fetchFromAPI') }}" id="fetchJokeButton" class="mt-4">{{ __('Get random dad joke') }}</x-secondary-button>
        </form>
-
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="{{ asset('js/secondarybutton.js') }}"></script>
        <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
             @foreach ($jokes as $joke)
                 <div class="p-6 flex space-x-2">
