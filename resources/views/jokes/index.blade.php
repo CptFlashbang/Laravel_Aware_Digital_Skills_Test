@@ -22,6 +22,9 @@
                             <div>
                                 <span class="text-gray-800">{{ $joke->user->name }}</span>
                                 <small class="ml-2 text-sm text-gray-600">{{ $joke->created_at->format('j M Y, g:i a') }}</small>
+                                @unless ($joke->created_at->eq($joke->updated_at))
+                                    <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
+                                @endunless
                             </div>
                         </div>
                         <p class="mt-4 text-lg text-gray-900">{{ $joke->message }}</p>
